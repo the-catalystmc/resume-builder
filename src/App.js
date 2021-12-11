@@ -16,10 +16,10 @@ class App extends React.Component {
         };
     
         // Bind eventhandler functions
-        this.inputChange = this.inputChange.bind(this);
-        this.submitClicked = this.submitClicked.bind(this);
-        this.deleteClicked = this.deleteClicked.bind(this);
-        this.updateText = this.updateText.bind(this);
+        // this.inputChange = this.inputChange.bind(this);
+        // this.submitClicked = this.submitClicked.bind(this);
+        // this.deleteClicked = this.deleteClicked.bind(this);
+        // this.updateText = this.updateText.bind(this);
       }
     render() {
         return (
