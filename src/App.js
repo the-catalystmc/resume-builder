@@ -27,7 +27,7 @@ class App extends React.Component {
         let edit = this.state.general.edit;
         this.setState({
             general: {
-                edit: !edit,
+                edit: e.target.innerHTML,
                 full_name: this.state.general.full_name,
                 current_role: this.state.general.current_role,
                 phone: this.state.general.phone,
