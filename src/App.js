@@ -1,6 +1,7 @@
 import React from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 import General from './components/General';
+import Summary from './components/Summary';
 import './App.css';
 class App extends React.Component {
     constructor() {
@@ -14,6 +15,7 @@ class App extends React.Component {
                 phone: 'Phone #',
                 email: 'Email Address',
             },
+            summary: "Role, with a love for an attribute of my job. Experienced in these niches. Fluent with or aware of these methods/skills.",
         }
         // Bind eventhandler functions
         this.inputChange = this.inputChange.bind(this);
@@ -94,6 +96,7 @@ class App extends React.Component {
                         <hr />
                         <h4>SUMMARY</h4>
                         <hr />
+                        <Summary summary={this.state.summary} />
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 40px;
 
 }
 
@@ -30,12 +31,16 @@
 
 .SummaryContainer {
   width: 100%;
-  text-align: center;
   padding: 10px 0;
 }
 
+.SummaryContainer h4 {
+  text-align: center;
+
+}
+
 hr {
-  width: 90%;
+  width: 100%;
   margin: auto;
   border: black solid 0.5px;
   color: black;
