@@ -21,10 +21,6 @@ class App extends React.Component {
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.setWrapperRef = this.setWrapperRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
-
-        // this.submitClicked = this.submitClicked.bind(this);
-        // this.deleteClicked = this.deleteClicked.bind(this);
-        // this.updateText = this.updateText.bind(this);
     }
 
     //Handle changing from input to readonly.

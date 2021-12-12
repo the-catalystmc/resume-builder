@@ -17,7 +17,8 @@
 }
 
 .Role {
-  text-transform: 'uppercase';
+  text-transform: uppercase;
+  color: red;
 }
 
 
