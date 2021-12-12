@@ -18,6 +18,7 @@ class General extends React.Component {
               name="full_name"
               onChange={this.props.inputChange}
               value={this.props.general.full_name}
+              onKeyDown={this.props.handleKeyDown}
             // onChange={(e) => {this.setState({general: {...this.state.general, full_name: e.target.value}})}} 
             />
           </div>
@@ -36,6 +37,7 @@ class General extends React.Component {
               name="current_role"
               onChange={this.props.inputChange}
               value={this.props.general.current_role}
+              onKeyDown={this.props.handleKeyDown}
             />
           </div>
           <p className='Contact' onClick={this.props.handleClick}>{`${this.props.general.email} | ${this.props.general.phone}`}</p>
@@ -49,11 +51,19 @@ class General extends React.Component {
           <h2 className='Name' onClick={this.props.handleClick}>{this.props.general.full_name}</h2>
           <h3 className='Role' onClick={this.props.handleClick}>{`${this.props.general.current_role}`}</h3>
           <div className='ContactInput'>
-            <input 
-            value={this.props.general.email} 
+            <input
+              type="text"
+              name="email"
+              onChange={this.props.inputChange}
+              value={this.props.general.email}
+              onKeyDown={this.props.handleKeyDown}
             />
-            <input 
-            value={this.props.general.phone} 
+            <input
+              type="text"
+              name="phone"
+              onChange={this.props.inputChange}
+              value={this.props.general.phone}
+              onKeyDown={this.props.handleKeyDown}
             />
           </div>
         </div>

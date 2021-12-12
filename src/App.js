@@ -18,27 +18,29 @@ class App extends React.Component {
         // Bind eventhandler functions
         this.inputChange = this.inputChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
         this.setWrapperRef = this.setWrapperRef.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+
         // this.submitClicked = this.submitClicked.bind(this);
         // this.deleteClicked = this.deleteClicked.bind(this);
         // this.updateText = this.updateText.bind(this);
     }
 
-    //Handle click outside of input
+    //Handle changing from input to readonly.
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClickOutside);
-      }
-    
-      componentWillUnmount() {
+    }
+
+    componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClickOutside);
-      }
+    }
 
-      setWrapperRef(node) {
+    setWrapperRef(node) {
         this.wrapperRef = node;
-      }
+    }
 
-      handleClickOutside(event) {
+    handleClickOutside(event) {
         if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
             this.setState({
                 general: {
@@ -47,7 +49,18 @@ class App extends React.Component {
                 },
             })
         }
-      }
+    }
+
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.setState({
+                general: {
+                    ...this.state.general,
+                    edit: false,
+                },
+            })
+        }
+    }
 
     //Handle clicks and inputs for general component
     handleClick = (e) => {
@@ -57,29 +70,29 @@ class App extends React.Component {
                 edit: e.target.className,
             },
         })
-        console.log(e)
     }
 
     inputChange = (e) => {
         const { name, value } = e.target;
-            this.setState({
-                general: {
-                    ...this.state.general,
-                    [name]: value,
-                }
-            })
+        this.setState({
+            general: {
+                ...this.state.general,
+                [name]: value,
+            }
+        })
     }
 
     render() {
         return (
-            <div  className='App-Cont'>
+            <div className='App-Cont'>
                 <div className="App">
                     <div ref={this.setWrapperRef}>
-                    <General
-                        general={this.state.general} 
-                        handleClick={this.handleClick} 
-                        inputChange={this.inputChange}
-                    />
+                        <General
+                            general={this.state.general}
+                            handleClick={this.handleClick}
+                            inputChange={this.inputChange}
+                            handleKeyDown={this.handleKeyDown}
+                        />
                     </div>
                 </div>
             </div>
