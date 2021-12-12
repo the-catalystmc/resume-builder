@@ -9,39 +9,78 @@ class App extends React.Component {
         this.state = {
             general: {
                 edit: false,
-                full_name: 'Rhyine Stewart',
-                current_role: 'DEVELOPER',
-                phone: '1 876 390-5206',
-                email: 'rhyinestewart@gmail.com',
+                full_name: 'Full Name',
+                current_role: 'Current Role',
+                phone: 'Phone #',
+                email: 'Email Address',
             },
         }
-        this.handleClick = this.handleClick.bind(this);
         // Bind eventhandler functions
-        // this.inputChange = this.inputChange.bind(this);
+        this.inputChange = this.inputChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
         // this.submitClicked = this.submitClicked.bind(this);
         // this.deleteClicked = this.deleteClicked.bind(this);
         // this.updateText = this.updateText.bind(this);
     }
 
+    //Handle click outside of input
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
+      }
+    
+      componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+      }
+
+      setWrapperRef(node) {
+        this.wrapperRef = node;
+      }
+
+      handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            this.setState({
+                general: {
+                    ...this.state.general,
+                    edit: false,
+                },
+            })
+        }
+      }
+
+    //Handle clicks and inputs for general component
     handleClick = (e) => {
-        let edit = this.state.general.edit;
         this.setState({
             general: {
-                edit: e.target.innerHTML,
-                full_name: this.state.general.full_name,
-                current_role: this.state.general.current_role,
-                phone: this.state.general.phone,
-                email: this.state.general.email,
+                ...this.state.general,
+                edit: e.target.className,
             },
         })
-        console.log(e.target.innerHTML + edit)
+        console.log(e)
+    }
+
+    inputChange = (e) => {
+        const { name, value } = e.target;
+            this.setState({
+                general: {
+                    ...this.state.general,
+                    [name]: value,
+                }
+            })
     }
 
     render() {
         return (
-            <div className='App-Cont'>
+            <div  className='App-Cont'>
                 <div className="App">
-                    <General general={this.state.general} handleClick={this.handleClick} />
+                    <div ref={this.setWrapperRef}>
+                    <General
+                        general={this.state.general} 
+                        handleClick={this.handleClick} 
+                        inputChange={this.inputChange}
+                    />
+                    </div>
                 </div>
             </div>
         );
