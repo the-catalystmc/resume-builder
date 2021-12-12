@@ -1,12 +1,19 @@
 .App-Cont {
-  padding: 40px 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App {
-  /* text-align: center; */
   border: 2px black solid;
   height: 100vh;
   padding: 10px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .GeneralContainer {
@@ -19,6 +26,19 @@
 .Role {
   text-transform: uppercase;
   color: red;
+}
+
+.SummaryContainer {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+hr {
+  width: 90%;
+  margin: auto;
+  border: black solid 0.5px;
+  color: black;
 }
 
 

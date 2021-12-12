@@ -90,6 +90,11 @@ class App extends React.Component {
                             handleKeyDown={this.handleKeyDown}
                         />
                     </div>
+                    <div className='SummaryContainer'>
+                        <hr />
+                        <h4>SUMMARY</h4>
+                        <hr />
+                    </div>
                 </div>
             </div>
         );
