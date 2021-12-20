@@ -36,7 +36,6 @@
 
 .SummaryContainer h4 {
   text-align: center;
-
 }
 
 hr {
@@ -47,3 +46,22 @@ hr {
 }
 
 
+.ExpContainer {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.ExpContainer h4 {
+  text-align: center;
+}
+
+.ExpCont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ExpLocation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
