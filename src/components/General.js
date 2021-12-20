@@ -16,7 +16,8 @@ class General extends React.Component {
             <input
               type="text"
               name="full_name"
-              onChange={this.props.inputChange}
+              // onChange={this.props.inputChange}
+              onChange={(e) => this.props.inputChange("general", e)}
               value={this.props.general.full_name}
               onKeyDown={this.props.handleKeyDown}
             // onChange={(e) => {this.setState({general: {...this.state.general, full_name: e.target.value}})}} 
@@ -35,7 +36,7 @@ class General extends React.Component {
             <input
               type="text"
               name="current_role"
-              onChange={this.props.inputChange}
+              onChange={(e) => this.props.inputChange("general", e)}
               value={this.props.general.current_role}
               onKeyDown={this.props.handleKeyDown}
             />
@@ -54,14 +55,14 @@ class General extends React.Component {
             <input
               type="text"
               name="email"
-              onChange={this.props.inputChange}
+              onChange={(e) => this.props.inputChange("general", e)}
               value={this.props.general.email}
               onKeyDown={this.props.handleKeyDown}
             />
             <input
               type="text"
               name="phone"
-              onChange={this.props.inputChange}
+              onChange={(e) => this.props.inputChange("general", e)}
               value={this.props.general.phone}
               onKeyDown={this.props.handleKeyDown}
             />
@@ -71,9 +72,9 @@ class General extends React.Component {
     }
     return (
       <div className='GeneralContainer'>
-        <h2 className='Name' onClick={this.props.handleClick}>{this.props.general.full_name}</h2>
-        <h3 className='Role' onClick={this.props.handleClick}>{this.props.general.current_role}</h3>
-        <p className='Contact' onClick={this.props.handleClick}>{`${this.props.general.email} | ${this.props.general.phone}`}</p>
+        <h2 className='Name' onClick={(e) => this.props.handleClick(e)}>{this.props.general.full_name}</h2>
+        <h3 className='Role' onClick={(e) => this.props.handleClick(e)}>{this.props.general.current_role}</h3>
+        <p className='Contact' onClick={(e) => this.props.handleClick(e)}>{`${this.props.general.email} | ${this.props.general.phone}`}</p>
       </div>
     )
   }

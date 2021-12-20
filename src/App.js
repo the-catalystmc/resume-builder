@@ -3,6 +3,7 @@ import React from 'react';
 import General from './components/General';
 import Summary from './components/Summary';
 import './App.css';
+import Experience from './components/Experience';
 class App extends React.Component {
     constructor() {
         super();
@@ -15,7 +16,10 @@ class App extends React.Component {
                 phone: 'Phone #',
                 email: 'Email Address',
             },
-            summary: "Role, with a love for an attribute of my job. Experienced in these niches. Fluent with or aware of these methods/skills.",
+            summary: {
+                edit: false,
+                text: "Role, with a love for an attribute of my job. Experienced in these niches. Fluent with or aware of these methods/skills.",
+            }
         }
         // Bind eventhandler functions
         this.inputChange = this.inputChange.bind(this);
@@ -56,28 +60,53 @@ class App extends React.Component {
                     ...this.state.general,
                     edit: false,
                 },
+                summary: {
+                    ...this.state.summary,
+                    edit: false,
+                },
             })
         }
     }
 
     //Handle clicks and inputs for general component
     handleClick = (e) => {
-        this.setState({
-            general: {
-                ...this.state.general,
-                edit: e.target.className,
-            },
-        })
+            this.setState({
+                general: {
+                    ...this.state.general,
+                    edit: e.target.className,
+                },
+            })
     }
 
-    inputChange = (e) => {
-        const { name, value } = e.target;
+    handleClickSum = (e) => {
         this.setState({
-            general: {
-                ...this.state.general,
-                [name]: value,
-            }
+            summary: {
+                ...this.state.summary,
+                edit: true,
+            },
         })
+}
+
+    inputChange = (val, e) => {
+        if (val == "general") {
+            const { name, value } = e.target;
+            this.setState({
+                general: {
+                    ...this.state.general,
+                    [name]: value,
+                }
+            })
+        }
+        if (val == "summary") {
+            const { name, value } = e.target;
+            this.setState({
+                summary: {
+                    ...this.state.summary,
+                    [name]: value,
+                }
+            })
+
+        }
     }
 
     render() {
@@ -92,11 +121,23 @@ class App extends React.Component {
                             handleKeyDown={this.handleKeyDown}
                         />
                     </div>
-                    <div className='SummaryContainer'>
+                    <div className='SummaryContainer' ref={this.setWrapperRef}>
                         <hr />
                         <h4>SUMMARY</h4>
                         <hr />
-                        <Summary summary={this.state.summary} />
+                        <Summary 
+                        summary={this.state.summary}
+                        handleClick={this.handleClickSum}
+                        inputChange={this.inputChange}
+                        handleKeyDown={this.handleKeyDown}
+                        />
+                    </div>
+
+                    <div className='ExpContainer'>
+                        <Experience 
+                        // summary={this.state.summary}
+                        // handleClick={this.handleClickSum}
+                        />
                     </div>
                 </div>
             </div>
