@@ -121,7 +121,7 @@ class App extends React.Component {
                             handleKeyDown={this.handleKeyDown}
                         />
                     </div>
-                    <div className='SummaryContainer' ref={this.setWrapperRef}>
+                    <div className='SummaryContainer'>
                         <hr />
                         <h4>SUMMARY</h4>
                         <hr />

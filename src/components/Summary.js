@@ -1,5 +1,6 @@
 import React from 'react';
 
+//add edit and submit buttons, necessary event handlers also.
 class Summary extends React.Component {
     constructor(props) {
         super(props);
